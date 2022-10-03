@@ -1,0 +1,79 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Mars_Store.Models.Entities.SANPHAM>
+@{
+    ViewBag.Title = "TimKiemSanPhamAdmin";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutAdmin.cshtml";
+}
+
+<table class="table table-bordered text-center">
+    <tr>
+        <th class="text-center">
+            TÊN SẢN PHẨM
+        </th>
+        <th class="text-center">
+            GIÁ
+        </th>
+        <th class="text-center">
+            KLƯỢNG
+        </th>
+        <th class="text-center">
+            MÀU
+        </th>
+        <th class="text-center">
+            ẢNH
+        </th>
+        <th class="text-center">
+            ĐỘNG CƠ
+        </th>
+        <th class="text-center">
+            CHIỀU DÀI
+        </th>
+        <th class="text-center">
+            CHIỀU CAO
+        </th>
+        <th class="text-center">
+            HỆ THỐNG THẮNG
+        </th>
+        <th class="text-center">
+            PHÂN LOẠI
+        </th>
+        <th class="text-center">
+            PKIỆN
+        </th>
+        <th class="text-center">
+            BHÀNH
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.tensanpham)</td>
+            <td>@Html.DisplayFor(modelItem => item.giabd)</td>
+            <td>@Html.DisplayFor(modelItem => item.trongluong)</td>
+            <td>@Html.DisplayFor(modelItem => item.mausac)</td>
+            <td><div><img src="@Url.Content("~/Content/images/"+item.ImgLink)" width="110" height="110"></div></td>
+            <td>@Html.DisplayFor(modelItem => item.memory)</td>
+            <td>@Html.DisplayFor(modelItem => item.hedieuhanh)</td>
+            <td>@Html.DisplayFor(modelItem => item.vga)</td>
+            <td>@Html.DisplayFor(modelItem => item.cpuz)</td>
+            <td>@Html.DisplayFor(modelItem => item.battery)</td>
+            <td>@Html.DisplayFor(modelItem => item.phukiendikem)</td>
+            <td>@Html.DisplayFor(modelItem => item.chedobaohanh)</td>
+            <td>
+                @Html.ActionLink("SỬA", "Edit", new { id = item.ID_SP }) ___<br />
+                @Html.ActionLink("XÓA", "Delete", new { id = item.ID_SP })
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="menu-trang">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>
+<style>
+    .menu-trang li {
+        display: inline;
+    }
+</style>

@@ -1,0 +1,67 @@
+﻿@model Mars_Store.Models.Entities.TAIKHOAN
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutCrea.cshtml";
+}
+@using (Html.BeginForm("Create", "TAIKHOAN", FormMethod.Post))
+{
+    <div class="log-input">
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="log-input">
+            <h4 class="text-left">TÊN TÀI KHOẢN *</h4>
+            <div class="user">
+                @Html.ValidationMessageFor(model => model.username)
+                @Html.EditorFor(model => model.username)
+            </div>
+        </div>
+        <div class="log-input">
+            <h4 class="text-left">MẬT KHẨU *</h4>
+            <div class="user">
+                @Html.ValidationMessageFor(model => model.password)
+                @Html.PasswordFor(model => model.password)
+            </div>
+        </div>
+        <div class="log-input">
+            <h4 class="text-left">TÊN CÁ NHÂN *</h4>
+            <div class="user">
+                @Html.ValidationMessageFor(model => model.tentk)
+                @Html.EditorFor(model => model.tentk)
+            </div>
+        </div>
+        <div class="log-input">
+            <h4 class="text-left">SỐ ĐIỆN THOẠI *</h4>
+            <div class="user">
+                @Html.ValidationMessageFor(model => model.phone)
+                @Html.EditorFor(model => model.phone)
+            </div>
+        </div>
+        <div class="log-input">
+            <h4 class="text-left">EMAIL/OUTLOCK *</h4>
+            <div class="user">
+                @Html.ValidationMessageFor(model => model.mail)
+                @Html.EditorFor(model => model.mail)
+            </div>
+        </div>
+        <div class="log-input">
+            <h4 class="text-left">ĐỊA CHỈ *</h4>
+            <div class="user">
+                @Html.ValidationMessageFor(model => model.diachi)
+                @Html.EditorFor(model => model.diachi)
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+        <input type="submit" onclick="return alert(this)" value="ĐĂNG KÝ">
+    </div>
+}
+<script>
+    function alert() {
+        var answer = confirm("Đăng ký thành công.Vui lòng đăng nhập để tiếp tục.");
+
+        if (answer) {
+            window.location = "/UserLogin/Index";
+        }
+    }
+</script>
+<script src="~/Content/js/jquery-1.7.2.min.js"></script>

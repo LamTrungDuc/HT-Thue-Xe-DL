@@ -1,0 +1,54 @@
+﻿@using Mars_Store.Security;
+<div class="menu">
+    <ul id="dc_mega-menu-orange" class="dc_mm-orange">
+        <li><a href="/SANPHAM">TRANG CHỦ</a></li>
+        @{Html.RenderAction("DMTinTuc","DANHMUC");}
+        <li>
+            <a href="#">SẢN PHẨM  <img src="/Content/logo/icon_hot.gif" width="35" height="12" /></a>
+            <ul>
+                    <li>
+                        <a href="/SANPHAM/SPOfNew">SẢN PHẦM MỚI   <img src="/Content/images/ads-hot.gif" width="35" height="12" /></a>
+                        <a href="/SANPHAM/SPKhuyenMai">SẢN PHẦM KHUYẾN MẠI</a>
+                        @*<ul>
+                            <li><a href="#">@item.tentin</a></li>
+                        </ul>*@
+                    </li>
+            </ul>
+        </li>
+        @*<li><a href="/SANPHAM/SPKhuyenMai">KHUYẾN MẠI  <img src="/Content/images/ads-hot.gif" width="35" height="12" /> </a></li>*@
+        <li><a href="/Attack/Attack">GIỚI THIỆU || LIÊN HỆ</a></li>
+        @if (SessionPersister.UserName != null) { 
+        <li>
+            <a href="#">TÀI KHOẢN</a>
+            <ul>
+                <li>
+                    <a> Hi!  <img src="/Content/logo/icon111.png" width="15" height="12"/>   @SessionPersister.UserName.UserName</a>
+                    <hr />
+                    <ul>
+                        <li><a href="#"> <img src="/Content/logo/logoname.png" width="12" height="12" />   THÔNG TIN CÁ NHÂN</a></li>
+                        <li><a href="/UserLogin/LogOut"> <img src="/Content/logo/out1.png" width="12" height="12" />   THOÁT</a></li>
+                    </ul>
+                </li>
+                </ul>
+</li>
+        }
+        <div class="clear"></div>
+    </ul>
+</div>
+<style>
+    .h4 h4 {
+        font-size: 18px;
+    }
+
+    .h4 h4{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .h4 {
+        font-family: inherit;
+        font-weight: 500;
+        line-height: 1.1;
+        color: inherit;
+    }
+</style>

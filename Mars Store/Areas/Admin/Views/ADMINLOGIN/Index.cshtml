@@ -1,0 +1,35 @@
+﻿@model Mars_Store.Models.Entities.Account
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_loginAdmin.cshtml";
+}
+
+@using (Html.BeginForm("Index", "ADMINLOGIN", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="log-input">
+        @*<h4>Tài khoản</h4>*@
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="log-input">
+            <div class="user">
+                @Html.EditorFor(model => model.UserName)
+                @Html.ValidationMessageFor(model => model.UserName)
+            </div>
+        </div>
+
+        <div class="log-input">
+            <div class="lock">
+                @Html.PasswordFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+                <input type="submit" value="ĐĂNG NHẬP"/>
+    </div>
+}
+
+
+
+
+

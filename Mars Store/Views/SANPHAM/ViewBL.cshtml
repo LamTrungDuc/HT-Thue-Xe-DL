@@ -1,0 +1,20 @@
+﻿@*@using Mars_Store.ViewModels;
+@model List<JoinViewModel>
+<hr />
+<h4> HIỂN THỊ NỘI DUNG BÌNH LUẬN THEO ID SẢN PHẨM </h4>
+<hr />*@
+
+@using Mars_Store.ViewModels
+@model IEnumerable<tblBinhLuanViewModel>
+
+
+<div class="product-desc">
+        @foreach (var a in Model)
+            {
+             <p>✧ @a.Username:  @a.NoiDung - ngày @a.Ngaybinhluan.ToShortDateString()</p><br />
+            }
+</div>
+
+<style>
+    h4{color:grey;}
+</style>

@@ -1,0 +1,136 @@
+﻿@model Mars_Store.Models.Entities.SANPHAM
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutAdmin.cshtml";
+}
+
+<h2>CẬP NHẬT SẢN PHẨM</h2>
+
+@using (Html.BeginForm("Edit", "SANPHAMADMIN", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.ID_SP)
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="ID_DM">MÃ DANH MỤC</label>
+            <div class="col-md-10">
+                @{var test = ViewBag.ID_DM as SelectList;}
+                @Html.DropDownListFor(model => model.ID_DM, ViewBag.ID_DM as SelectList, "Chọn", new { @class = "fomr-control" })
+                @*@Html.EditorFor(model => model.ID_DM)*@
+                @Html.ValidationMessageFor(model => model.ID_DM)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="ID_DM">TÊN SẢN PHẨM</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.tensanpham)
+                @Html.ValidationMessageFor(model => model.tensanpham)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="giabd">GIÁ BÁN</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.giabd)
+                @Html.ValidationMessageFor(model => model.giabd)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="ID_DM">KHỐI LƯỢNG</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.trongluong)
+                @Html.ValidationMessageFor(model => model.trongluong)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="ID_DM">MÀU SẮC</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.mausac)
+                @Html.ValidationMessageFor(model => model.mausac)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="ID_DM">ẢNH</label>
+            <div class="col-md-10">
+                <input type="file" name="file" />
+                @*@Html.EditorFor(model => model.ImgLink)
+                    @Html.ValidationMessageFor(model => model.ImgLink)*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="ID_DM">ĐỘNG CƠ</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.memory)
+                @Html.ValidationMessageFor(model => model.memory)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="ID_DM">CHIỀU DÀI</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.hedieuhanh)
+                @Html.ValidationMessageFor(model => model.hedieuhanh)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="ID_DM">CHIỀU CAO</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.vga)
+                @Html.ValidationMessageFor(model => model.vga)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="ID_DM">HỆ THỐNG THẮNG</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.cpuz)
+                @Html.ValidationMessageFor(model => model.cpuz)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="ID_DM">LOẠI</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.battery)
+                @Html.ValidationMessageFor(model => model.battery)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="ID_DM">PHỤ KIỆN</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.phukiendikem)
+                @Html.ValidationMessageFor(model => model.phukiendikem)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="ID_DM">BẢO HÀNH</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.chedobaohanh)
+                @Html.ValidationMessageFor(model => model.chedobaohanh)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="LƯU LẠI" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("QUAY LẠI", "Index")
+</div>

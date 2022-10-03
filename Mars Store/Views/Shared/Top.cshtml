@@ -1,0 +1,59 @@
+﻿@using Mars_Store.Models.Entities
+<div class="header_top_right">
+    <div class="search_box">
+        @using (Html.BeginForm("AllProducer", "SANPHAM", FormMethod.Get))
+        {
+
+            @Html.TextBox("keyword", "", htmlAttributes: new { @class = "TextBoxTimKiem", @placeholder = "Nhập vào tên sản phẩm ... " })
+             <input type="submit" value="Tìm kiếm" />
+            @*<button type="submit">tìm kiếm</button>*@
+
+        }
+    </div>
+    
+    <div class="shopping_cart">
+        <div class="cart">
+            <a href="/Cart/Index">
+                @if(Session["CartSession"] != null)
+                {
+                    Cart cart = (Cart)Session["CartSession"];
+                    <span class="no_product">@cart.TotalItem() sản phẩm</span>
+                }
+                else
+                {
+                    <span class="no_product">0 sản phẩm</span>
+                }
+            </a>
+        </div>
+    </div>
+    <!--Tiếng-->
+    <!--Tỷ giá-->
+    <div class="login">
+        <span><a href="/UserLogin/Index"><img src="/Content/images/loginhi.png" alt="" title="Login" /></a></span>
+    </div>
+    <div class="clear"></div>
+        @{Html.RenderAction("ViewKhoangGia","SANPHAM");}
+</div>
+
+<style>
+    .select-style {
+        border: 1px solid #ccc;
+        width: 200px;
+        border-radius: 3px;
+        overflow: hidden;
+        background: #fafafa url("img/icon-select.png") no-repeat 90% 50%;
+    }
+
+        .select-style select {
+            padding: 3px 0px;
+            width: 100%;
+            border: indigo;
+            box-shadow: none;
+            background: transparent;
+            background-image: none;
+        }
+
+            .select-style select:focus {
+                outline: none;
+            }
+</style>

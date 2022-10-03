@@ -1,0 +1,35 @@
+﻿@model Mars_Store.Models.Entities.DANHMUC
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutAdmin.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>CHỈNH SỬA</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.ID_DM)
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="ID_DM">TÊN DANH MỤC</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.tendanhmuc)
+                @Html.ValidationMessageFor(model => model.tendanhmuc)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="LƯU LẠI" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("QUAY LẠI", "Index")
+</div>

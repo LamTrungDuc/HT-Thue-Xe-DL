@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Mars_Store.Models.Entities.CTDONHANG>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutAdmin.cshtml";
+}
+<table class="table table-bordered">
+    <tr>
+        <th class="text-center">
+            ĐỊA CHỈ GIAO HÀNG
+        </th>
+        <th class="text-center">
+            TÊN SẢN PHẨM
+        </th>
+        <th class="text-center">
+            SỐ LƯỢNG
+        </th>
+        <th class="text-center">
+            ĐƠN GIÁ
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DONHANG.diachigiaohang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SANPHAM.tensanpham)
+        </td>
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.soluong)
+        </td>
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.dongia)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.ID_CTDH }) |
+            <a href="/ADMIN/DONHANG/Details/@item.ID_DH">Chi tiết</a> |
+            <a href="/ADMIN/DONHANG/Delete/@item.ID_DH">Xóa</a>
+        </td>
+    </tr>
+}
+
+</table>

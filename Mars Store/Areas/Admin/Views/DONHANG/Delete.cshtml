@@ -1,0 +1,20 @@
+﻿@model Mars_Store.Models.Entities.DONHANG
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutAdmin.cshtml";
+}
+
+<h3>Bạn có thực sự muốn xóa đơn hàng này không?</h3>
+<div>
+    <hr />
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("QUAY LẠI", "Index") |
+            <input type="submit" value="XÓA" class="btn btn-default" />
+        </div>
+    }
+</div>

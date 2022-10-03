@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Mars_Store.Models.Entities.DONHANG>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutAdmin.cshtml";
+}
+
+<table class="table table-bordered text-center">
+    <tr>
+        <th class="text-center">
+            ID TÀI KHOẢN
+        </th>
+        <th class="text-center">
+            NGÀY LẬP
+        </th>
+        <th class="text-center">
+            NGÀY NHẬN
+        </th>
+        <th class="text-center">
+            ĐỊA CHỈ GIAO HÀNG
+        </th>
+        <th class="text-center">
+            SỐ ĐIỆN THOẠI
+        </th>
+        <th class="text-center">
+            TRẠNG THÁI
+        </th>
+        <th class="text-center">
+            HỌ TÊN KHÁCH HÀNG
+        </th>
+        <th class="text-center">TÁC VỤ</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_TK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngaylap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngaynhanhang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.diachigiaohang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phone)
+        </td>
+        <td>
+            @if (item.trangthai == null)
+            {
+                <span>Đang chờ xử lý</span>
+            }
+            else if (item.trangthai == true) { <span>Đã duyệt</span>}
+            else if (item.trangthai == false){ <span>Chưa duyệt</span>}
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hotenkh)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.ID_DH }) |
+            @Html.ActionLink("Chi Tiết", "Details", new { id=item.ID_DH }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.ID_DH })
+        </td>
+    </tr>
+}
+
+</table>

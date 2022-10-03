@@ -1,0 +1,61 @@
+﻿@using Mars_Store.Models.Entities;
+@*@using PagedList;
+    @using PagedList.Mvc;
+    @model PagedList.PagedList<SANPHAM>*@
+@model IEnumerable<SANPHAM>
+@{
+    ViewBag.Title = "FilterSPofDM";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}<br />
+<div class="content">
+    <div class="content_top">
+
+        <div class="heading">
+            <h3>Danh sách sản phẩm - @ViewBag.TenDM </h3>
+        </div>
+        <div class="see">
+        </div>
+        <div class="clear"></div>
+    </div>
+    @{ var i = 0;
+        List<SANPHAM> list = new List<SANPHAM>();
+        foreach (SANPHAM P in Model)
+        {
+            list.Add(P);
+            i++;
+            if (i % 4 == 0 )
+            {
+                <div class="section group">
+                    @foreach (SANPHAM a in list)
+                    {
+                        <div class="grid_1_of_4 images_1_of_4">
+                            <a href="/SanPham/Details/@a.ID_SP"><img src="/Content/images/@a.ImgLink" width="150" height="150" /></a>
+                            <h2>@a.tensanpham </h2>
+                            <div class="price-details">
+                                <div class="price-number">
+                                    @if (a.giabd == null)
+                                    {
+                                        <p><span class="rupees"> Liên hệ</span> </p>
+                                    }
+                                    else
+                                    {
+                                        <p><span class="rupees">@string.Format("{0:##,#}", @a.giabd) VNĐ</span> </p>}
+                                </div>
+                                <div class="add-cart">
+                                    <div class="button"><span><a href="/cart/AddItem/@a.ID_SP">Thuê Xe</a></span></div>
+                                    @*<h4><a href="/cart/AddItem/@a.Mahang">Add to Cart</a></h4>*@
+                                    <div class="button"><span><a href="/SanPham/Details/@a.ID_SP" class="details">Chi tiết</a></span></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                list = new List<SANPHAM>();
+            }
+        }
+
+
+    }
+</div>
+

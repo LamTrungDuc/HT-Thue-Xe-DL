@@ -1,0 +1,277 @@
+﻿ <!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    @*<title></title>*@
+    @*<link rel="stylesheet" href="/Content/bootstrap.min.css">*@
+    <script src="/Content/js/jquery.min.js"></script>
+    <script src="/Content/bootstrap.min.js"></script>
+    <title> MARS CARS | HOME </title>
+    <link href="/Content/images/id4.png" rel="shortcut icon" type="image/x-icon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    @*<link href="~/Content/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="~/Content/css/base.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.css" rel="stylesheet" />*@
+    <link href="/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/Content/css/menu.css" rel="stylesheet" type="text/css" media="all" />
+    @*<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>*@
+    <script src="/Content/js/script.js" type="text/javascript"></script>
+    @*<script type="text/javascript" src="/Content/js/jquery-1.7.2.min.js"></script>*@
+    <script type="text/javascript" src="/Content/js/nav.js"></script>
+    <script type="text/javascript" src="/Content/js/move-top.js"></script>
+    <script type="text/javascript" src="/Content/js/easing.js"></script>
+    <script type="text/javascript" src="/Content/js/nav-hover.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
+    <script type="text/javascript">
+        $(document).ready(function ($) {
+            $('#dc_mega-menu-orange').dcMegaMenu({ rowItems: '4', speed: 'fast', effect: 'fade' });
+        });
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="header_top">
+                <div class="logo">
+                    <a href="/SANPHAM"><img src="/Content/logo/logoM.jpg" width="320" height="100" alt="" /></a>
+                </div>
+                @Html.Partial("Top")
+                <div class="clear"></div>
+            </div>
+            <div class="menu">
+                @Html.Partial("Menu")
+            </div>
+            <div class="main">
+                @RenderBody()
+            </div>
+            <!-- SUPPORT ONLINE -->
+
+            <!-- CODE -->
+
+            <!-- END -->
+            @*<embed src="/Content/razer/faded.mp3" width="0" height="0" type="audio/mp3" loop="infinite">*@
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        /*
+                        var defaults = {
+                            containerID: 'toTop', // fading element id
+                            containerHoverID: 'toTopHover', // fading element hover id
+                            scrollSpeed: 1200,
+                            easingType: 'linear'
+                        };
+                        */
+
+                        $().UItoTop({ easingType: 'easeOutQuart' });
+
+                    });
+                </script>
+                <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+                <link href="/Content/css/flexslider.css" rel='stylesheet' type='text/css' />
+                <script defer src="/Content/js/jquery.flexslider.js"></script>
+                <script type="text/javascript">
+                    $(function () {
+                        SyntaxHighlighter.all();
+                    });
+                    $(window).load(function () {
+                        $('.flexslider').flexslider({
+                            animation: "slide",
+                            start: function (slider) {
+                                $('body').removeClass('loading');
+                            }
+                        });
+                    });
+                </script>
+            <!-- CLICK -->
+            @*<style type="text/css">
+                a:hover, a.link:hover, a.navbar:hover {
+                    background-image: url(http://www.poqbum.com/animated_hover/images/grey_stars.gif);
+                    font-size: 10pt;
+                    color:;
+                    text-decoration: none;
+                    border: 1px solid;
+                }
+            </style>*@
+
+            <!-- CHẶN CHUỘT PHẢI -->
+
+            @*<script src="/Content/js/jquery-1.4.2.min.js"></script>
+            <script type="text/javascript">
+                $(document).bind('contextmenu', function (e) { return false; });
+            </script>*@
+
+
+            <!-- CHUÔT XOAY -->
+            @*<script language="JavaScript" type="text/javascript">
+
+                var xCol = "#FF0000";
+                var yCol = "#FFFF00";
+                var zCol = "#0000FF";
+
+                var n = 6; //number of dots per trail.
+                var t = 40; //setTimeout speed.
+                var s = 0.2; //effect speed.
+
+                var r, h, w;
+                var d = document;
+                var my = 10;
+                var mx = 10;
+                var stp = 0;
+                var evn = 360 / 3;
+                var vx = new Array();
+                var vy = new Array();
+                var vz = new Array();
+                var dy = new Array();
+                var dx = new Array();
+
+                var pix = "px";
+
+                var strictmod = ((document.compatMode) &&
+                document.compatMode.indexOf("CSS") != -1);
+
+                var domWw = (typeof window.innerWidth == "number");
+                var domSy = (typeof window.pageYOffset == "number");
+                var idx = d.getElementsByTagName('div').length;
+
+                for (i = 0; i < n; i++) {
+                    var dims = (i + 1) / 2;
+                    d.write('<div id="x' + (idx + i) + '" style="position:absolute;'
+                    + 'top:0px;left:0px;width:' + dims + 'px;height:' + dims + 'px;'
+                    + 'background-color:' + xCol + ';font-size:' + dims + 'px"><\/div>'
+                    + '<div id="y' + (idx + i) + '" style="position:absolute;top:0px;'
+                    + 'left:0px;width:' + dims + 'px;height:' + dims + 'px;'
+                    + 'background-color:' + yCol + ';font-size:' + dims + 'px"><\/div>'
+                    + '<div id="z' + (idx + i) + '" style="position:absolute;top:0px;'
+                    + 'left:0px;width:' + dims + 'px;height:' + dims + 'px;'
+                    + 'background-color:' + zCol + ';font-size:' + dims + 'px"><\/div>');
+                }
+
+                if (domWw) r = window;
+                else {
+                    if (d.documentElement &&
+                    typeof d.documentElement.clientWidth == "number" &&
+                    d.documentElement.clientWidth != 0)
+                        r = d.documentElement;
+                    else {
+                        if (d.body && typeof d.body.clientWidth == "number")
+                            r = d.body;
+                    }
+                }
+
+                function winsize() {
+                    var oh, sy, ow, sx, rh, rw;
+                    if (domWw) {
+                        if (d.documentElement && d.defaultView &&
+                        typeof d.defaultView.scrollMaxY == "number") {
+                            oh = d.documentElement.offsetHeight;
+                            sy = d.defaultView.scrollMaxY;
+                            ow = d.documentElement.offsetWidth;
+                            sx = d.defaultView.scrollMaxX;
+                            rh = oh - sy;
+                            rw = ow - sx;
+                        }
+                        else {
+                            rh = r.innerHeight;
+                            rw = r.innerWidth;
+                        }
+                        h = rh;
+                        w = rw;
+                    }
+                    else {
+                        h = r.clientHeight;
+                        w = r.clientWidth;
+                    }
+                }
+
+                function scrl(yx) {
+                    var y, x;
+                    if (domSy) {
+                        y = r.pageYOffset;
+                        x = r.pageXOffset;
+                    }
+                    else {
+                        y = r.scrollTop;
+                        x = r.scrollLeft;
+                    }
+                    return (yx == 0) ? y : x;
+                }
+
+                function mouse(e) {
+                    var msy = (domSy) ? window.pageYOffset : 0;
+                    if (!e) e = window.event;
+                    if (typeof e.pageY == 'number') {
+                        my = e.pageY - msy + 16;
+                        mx = e.pageX + 6;
+                    }
+                    else {
+                        my = e.clientY - msy + 16;
+                        mx = e.clientX + 6;
+                    }
+                    if (my > h - 65) my = h - 65;
+                    if (mx > w - 50) mx = w - 50;
+                }
+
+                function assgn() {
+                    for (j = 0; j < 3; j++) {
+                        dy[j] = my + 50 * Math.cos(stp + j * evn * Math.PI / 180) *
+
+                        Math.sin((stp + j * 25) / 2) + scrl(0) + pix;
+                        dx[j] = mx + 50 * Math.sin(stp + j * evn * Math.PI / 180) *
+
+                        Math.sin((stp + j * 25) / 2) * Math.sin(stp / 4) + pix;
+                    }
+                    stp += s;
+
+                    for (i = 0; i < n; i++) {
+                        if (i < n - 1) {
+                            vx[i].top = vx[i + 1].top; vx[i].left = vx[i + 1].left;
+                            vy[i].top = vy[i + 1].top; vy[i].left = vy[i + 1].left;
+                            vz[i].top = vz[i + 1].top; vz[i].left = vz[i + 1].left;
+                        }
+                        else {
+                            vx[i].top = dy[0]; vx[i].left = dx[0];
+                            vy[i].top = dy[1]; vy[i].left = dx[1];
+                            vz[i].top = dy[2]; vz[i].left = dx[2];
+                        }
+                    }
+                    setTimeout(assgn, t);
+                }
+
+                function init() {
+                    for (i = 0; i < n; i++) {
+                        vx[i] = document.getElementById("x" + (idx + i)).style;
+                        vy[i] = document.getElementById("y" + (idx + i)).style;
+                        vz[i] = document.getElementById("z" + (idx + i)).style;
+                    }
+                    winsize();
+                    assgn();
+                }
+
+                if (window.addEventListener) {
+                    window.addEventListener("resize", winsize, false);
+                    window.addEventListener("load", init, false);
+                    document.addEventListener("mousemove", mouse, false);
+                }
+                else
+                    if (window.attachEvent) {
+                        window.attachEvent("onload", init);
+                        document.attachEvent("onmousemove", mouse);
+                        window.attachEvent("onresize", winsize);
+                    }
+            </script>*@
+
+            </div>
+        </div>
+
+    <div class="footer">
+        @Html.Partial("EndPage")
+    </div>
+</body>
+</html>
+

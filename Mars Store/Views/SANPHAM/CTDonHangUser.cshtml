@@ -1,0 +1,128 @@
+﻿
+@using Mars_Store.Models.Entities;
+@model Mars_Store.Models.Entities.DONHANG
+@{
+    ViewBag.Title = "CTDonHangUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<div>
+	<hr />
+<label style="color: red; font-size: 20px; font-family:Arial; "> ► CHI TIẾT NGƯỜI DÙNG</label>
+    <table class="table table-bordered" border="1">
+        <tr>
+            <th width="120px">
+                TÊN TÀI KHOẢN
+            </th>
+            <th width="120">
+                NGÀY LẬP HĐ
+            </th>
+            <th width="120">
+               NGÀY NHẬN HĐ
+            </th>
+            <th width="205">
+                ĐỊA CHỈ
+            </th>
+            <th width="110">
+                SỐ ĐT
+            </th>
+            <th>
+                TRẠNG THÁI ĐH
+            </th>
+            <th width="130">
+                HỌ TÊN KH
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.TAIKHOAN.username)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ngaylap)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ngaynhanhang)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.diachigiaohang)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.phone)
+            </td>
+            <td>
+                @if (Model.trangthai == null)
+                {
+                    <span>Đang chờ xử lý</span>
+                }
+                else if (Model.trangthai == true)
+                { <span>Đã duyệt</span>}
+                else if (Model.trangthai == false)
+                { <span>Chưa duyệt</span>}
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(model => model.hotenkh)
+            </td>
+        </tr>
+    </table>
+</div>
+<br />
+<label style="color: red; font-size: 20px; font-family: Arial; "> ► CHI TIẾT ĐƠN HÀNG</label>
+<table class="table table-hover table-bordered text-center" border="1">
+    <tr>
+        <th class="text-center">
+            MÃ SẢN PHẨM
+        </th>
+        <th class="text-center">
+            TÊN SẢN PHẨM
+        </th>
+        <th class="text-center" width="200">
+            ẢNH SẢN PHẨM
+        </th>
+        <th class="text-center">
+            ĐƠN GIÁ
+        </th>
+        <th class="text-center">
+            SỐ LƯỢNG
+        </th>
+        <th class="text-center">
+            THÀNH TIỀN
+        </th>
+        <th class="text-center" width="100">
+            CHẾ ĐỘ BẢO HÀNH
+        </th>
+    </tr>
+
+    @foreach (CTDONHANG item in (ViewBag.CTHD as IEnumerable<CTDONHANG>))
+    {
+        <tr>
+            <td>
+                @item.ID_SP
+            </td>
+            <td>
+                @item.SANPHAM.tensanpham
+            </td>
+            <td>
+                <div><img src="@Url.Content("~/Content/images/"+item.SANPHAM.ImgLink)" width="130" height="130"></div>
+            </td>
+            <td>
+                @item.SANPHAM.giabd
+            </td>
+            <td>
+                @item.soluong
+            </td>
+            <td>
+                @(item.soluong * item.SANPHAM.giabd)
+            </td>
+            <td>
+                @item.SANPHAM.chedobaohanh
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<p>
+   <button> @Html.ActionLink("QUAY LẠI", "Index")</button> |
+   <button style="color:gray;"> @Html.ActionLink("SỬA ĐƠN HÀNG", "Edit", new { id = Model.ID_DH })</button>
+</p>
+<br />
+<style>table{border-radius:3px;}</style>

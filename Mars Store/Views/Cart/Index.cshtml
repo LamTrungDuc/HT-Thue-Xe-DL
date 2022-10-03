@@ -1,0 +1,83 @@
+﻿@model List<Mars_Store.Models.Entities.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<div class="content">
+    <div class="section group">
+        @if (Model.Count > 0)
+        {
+
+            <table class="table text-center">
+                <thead class="bg-info12">
+                    <tr class="">
+                        <th class="text-center" width="20%">Ảnh</th>
+                        <th class="text-center" width="20%">Tên Sản Phẩm</th>
+                        <th class="text-center" width="20%">Số Lượng</th>
+                        @*<th class="text-center" width="20%">Tình Trạng</th>*@
+                        <th class="text-center" width="20%">Giá Tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var sp in Model)
+                    {
+                        <tr>
+                            <td class="text-center" style="padding-right: 10px!important;">
+                                <img src="/Content/images/@sp.Sanpham.ImgLink" width="135" height="135">
+                            </td>
+                            <td class="text-center vertical-center">
+                                <a href="/SanPham/Details/@sp.Sanpham.ID_SP">
+                                    <span class="text-uppercase">@sp.Sanpham.tensanpham </span>
+
+                                </a>
+                            </td>
+                            <td class="vertical-center" style="position: relative">
+                                <a href="/Cart/RemoveOneItem/@sp.Sanpham.ID_SP">
+                                    <span class="glyphicon glyphicon-minus" aria-hidden="true" title="Minus"></span>
+                                </a>
+
+                                <span class="well well-sm quantity-item">@sp.Quantity</span>
+                                <a href="/Cart/AddToCart/@sp.Sanpham.ID_SP">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true" title="Plus"></span>
+                                </a>
+
+                                <a href="/Cart/RemoveLine/@sp.Sanpham.ID_SP" class="remove-item">
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true" title="Remove"></span>
+                                </a>
+                            </td>
+                            @*<td class="vertical-center cart-lead">
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                    <br><small><b>Còn hàng</b></small>
+                                </td>*@
+                            <td class="text-center vertical-center cart-lead">
+                                <span><!-- mp_trans_disable_start -->@string.Format("{0:##,#}", sp.Sanpham.giabd) VNĐ<!-- mp_trans_disable_end --></span>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <style>
+                .col-md-6 {
+                    padding-bottom: 10px;
+                }
+            </style>
+            <div class="col-md-6 text-uppercase">
+                <div class="card-button-proceed">
+                    @*<a href="/cart/ShowSelectionCart">XÁC NHẬN MUA HÀNG</a>*@
+                    <a href="/UserLogin/Sele">XÁC NHẬN THUÊ XE</a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <br />
+            <span class="alert alert-danger">Chưa có sản phẩm nào trong giỏ hàng</span>
+            <br />
+            <br />
+        }
+
+    </div>
+
+</div>

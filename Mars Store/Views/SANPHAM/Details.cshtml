@@ -1,0 +1,162 @@
+﻿@using Mars_Store.Security;
+@using Mars_Store.ViewModels;
+@model tblSanPhamViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<div class="main">
+    <div class="content">
+        @*<div class="content_top">
+                <div class="clear"></div>
+            </div>*@
+        <div class="section group">
+            <div class="cont-desc span_1_of_2">
+                <div class="grid images_3_of_2">
+                    <img src="/Content/images/@Model.ImgLink" alt="" />
+                </div>
+                <div class="desc span_3_of_2">
+                    <h2>Tên sản phẩm: @Model.tensanpham</h2>
+                    <div class="price">
+                        <p>GIÁ THUÊ XE 1 NGÀY: <span>@string.Format("{0:##,#}", @Model.giabd) VNĐ</span></p>
+                    </div>
+                    <div class="available">
+                        <ul>
+                            <li>
+                                ☞ MÀU SẮC: @Model.mausac
+                            </li><br />
+                            <li>
+                                ☞ ĐỘNG CƠ: @Model.memory
+                            </li><br />
+                            <li>
+                                ☞ HỆ THỐNG THẮNG: @Model.cpuz
+                            </li><br />
+                            <li>
+                                ☞ CHIỀU DÀI: @Model.hedieuhanh
+                            </li><br />
+                            <li>
+                                ☞ CHẾ ĐỘ BẢO HÀNH: @Model.chedobaohanh
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="add-cart">
+                        <div class="rating">
+                            <p>Đánh giá:<img src="/Content/images/rating.png" alt="" /><span>[3 of 5 Stars]</span></p>
+                        </div>
+                        <div class="button"><span><a href="/Cart/AddItem/@Model.ID_SP">Thuê xe</a></span></div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="product-desc">
+                    <h2>THÔNG TIN CHI TIẾT XE</h2><br />
+                    <p>✧ TÊN XE: @Model.tensanpham</p><br />
+                    <p>✧ KHỐI LƯỢNG XE: @Model.trongluong KG</p><br />
+                    <p>✧ ĐỘNG CƠ: @Model.memory</p><br />
+                    <p>✧ CHIỀU CAO: @Model.vga</p><br />
+                    <p>✧ CHIỀU DÀI: @Model.hedieuhanh</p><br />
+                    <p>✧ HỆ THỐNG THẮNG: @Model.cpuz</p><br />
+                    <p>✧ PHÂN LOẠI: @Model.battery</p><br />
+                </div>
+                
+                <div class="product-tags">
+                    <h2>ĐÁNH GIÁ | NHẬN XÉT | BÌNH LUẬN VỀ XE</h2><br />
+                    @*@{Html.RenderAction("ViewBL", "SANPHAM");}*@
+                    @{Html.RenderPartial("ViewBL", Model.BinhLuan);}
+                    @if (SessionPersister.UserName != null)
+                        {
+                  <!-- -->
+                    <form action="/SanPham/Comment/@Model.ID_SP" method="post">
+            <div class="input-box">
+                @Html.TextArea("textbinhluan", "", htmlAttributes: new { @class = "TextBoxBinhLuan", @placeholder = "" })
+            </div>
+            <div class="button"><input type="submit" value="Gửi" /></div>
+                    </form>
+                        }
+                <br />
+                    
+                <h2>SẢN PHẨM TƯƠNG TỰ</h2><br />
+                    @{Html.RenderAction("SPOfDB", "SANPHAM");}
+        </div>
+            </div>
+            <div class="rightsidebar span_3_of_1">
+                <hr />
+                <h4> TÌM KIẾM NÂNG CAO </h4>
+                <hr />
+                <style>h4{text-align:center;}</style>
+
+                <div id="right_pro_page">
+                    @Html.Partial("_ChangeSearch")
+                    <!--box_right-->
+                    <div class="clear space2"></div>
+                    <div class="box_right_detail">
+                        @{Html.RenderAction("HSX", "DANHMUC");}
+                @*@{Html.RenderAction("MainMenu", "DanhMuc");}*@
+                <div class="subscribe">
+                    <h4>Nhận thông tin sản Xe mới</h4>
+                    <div class="signup">
+                        <form>
+                            <input type="text" value="nhập email" onfocus="this.value = '';"
+                                   onblur="if (this.value == '') { this.value == 'E-mail address' }">;
+                            
+                        </form>
+                    </div><br />
+                </div>
+                        <img src="/Content/images/3957.jpg"/>
+                <div class="community-poll text-center">
+                    <p>Bạn nghĩ gì về Mars CARS?</p><br />
+                    <div class="poll">
+                <form>
+                    <ul>
+                            <li>
+                                <input type="radio" name="vote" class="radio" value="1">
+                                <span class="label"><label>Thấy bình thường </label></span>
+                            </li>
+                            <li>
+                                <input type="radio" name="vote" class="radio" value="2">
+                                <span class="label"><label for="vote_2">Thấy khá hơn</label></span>
+                            </li>
+                            <li>
+                                <input type="radio" name="vote" class="radio" value="3">
+                                <span class="label"><label for="vote_3">Thấy đẹp, chức năng tốt</label></span>
+                            </li>
+                            <li>
+                                <input type="radio" name="vote" class="radio" value="5">
+                                <span class="label"><label for="vote_5">Thấy hoàn thiện, hướng khách hàng </label></span>
+                            </li>
+                            <li>
+                                <input type="radio" name="vote" class="radio" value="6">
+                                <span class="label"><label for="vote_6">Cần xem lại một số phần </label></span>
+                            </li>
+                            <li>
+                                <input type="radio" name="vote" class="radio" value="7">
+                                <span class="label"><label for="vote_7">Tồi, kém chuyên nghiệp</label></span>
+                            </li>
+                        </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<style>
+    .images_1_of_4 {
+        width: 20.8%;
+        padding: 1.5%;
+        height: 250px;
+        text-align: center;
+        position: static;
+    }
+
+    textarea {
+        font-family: a;
+        border-color: rgb(169, 169, 169);
+        width: 662px;
+        height: 85px;
+    }
+</style>

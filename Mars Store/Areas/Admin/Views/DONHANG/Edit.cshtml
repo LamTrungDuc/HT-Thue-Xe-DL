@@ -1,0 +1,229 @@
+﻿@model Mars_Store.Models.Entities.DONHANG
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutAdmin.cshtml";
+}
+@using (Html.BeginForm("Edit","DONHANG", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    if (Model.trangthai == null) { 
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.ID_DH)
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">ID TÀI KHOẢN(NẾU ĐĂNG NHẬP)</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ID_TK)
+                @Html.ValidationMessageFor(model => model.ID_TK)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">NGÀY LẬP ĐƠN</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ngaylap, new { @Value = Model.ngaylap.ToString("d") })
+                @Html.ValidationMessageFor(model => model.ngaylap)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">NGÀY NHẬN HÀNG</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ngaynhanhang, new { @Value = Model.ngaylap.ToString("d") })
+                @Html.ValidationMessageFor(model => model.ngaynhanhang)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">ĐỊA CHỈ GIAO HÀNG</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.diachigiaohang)
+                @Html.ValidationMessageFor(model => model.diachigiaohang)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">SỐ ĐIỆN THOẠI</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.phone)
+                @Html.ValidationMessageFor(model => model.phone)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">TRẠNG THÁI ĐƠN HÀNG</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.trangthai)
+                <br /><span>Not Set: Đang chờ xử lý</span>
+                <br /><span>True: Đã duyệt</span>
+                <br /><span>False: Chưa duyệt</span>
+                @Html.ValidationMessageFor(model => model.trangthai)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">TÊN KHÁCH HÀNG</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.hotenkh)
+                @Html.ValidationMessageFor(model => model.hotenkh)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="LƯU LẠI" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+    else if (Model.trangthai == true)
+    {
+        <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.ID_DH)
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">ID TÀI KHOẢN(NẾU ĐĂNG NHẬP)</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ID_TK)
+                @Html.ValidationMessageFor(model => model.ID_TK)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">NGÀY LẬP ĐƠN</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ngaylap, new { @Value = Model.ngaylap.ToString("d") })
+                @Html.ValidationMessageFor(model => model.ngaylap)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">NGÀY NHẬN HÀNG</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ngaynhanhang, new { @Value = Model.ngaylap.ToString("d") })
+                @Html.ValidationMessageFor(model => model.ngaynhanhang)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">ĐỊA CHỈ GIAO HÀNG</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.diachigiaohang)
+                @Html.ValidationMessageFor(model => model.diachigiaohang)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">SỐ ĐIỆN THOẠI</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.phone)
+                @Html.ValidationMessageFor(model => model.phone)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">TRẠNG THÁI ĐƠN HÀNG</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.trangthai)
+                <br /><span>Not Set: Đang chờ xử lý</span>
+                <br /><span>True: Đã duyệt</span>
+                <br /><span>False: Chưa duyệt</span>
+                @Html.ValidationMessageFor(model => model.trangthai)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">TÊN KHÁCH HÀNG</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.hotenkh)
+                @Html.ValidationMessageFor(model => model.hotenkh)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="LƯU LẠI" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+    else if (Model.trangthai == false)
+    {
+        <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.ID_DH)
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">ID TÀI KHOẢN(NẾU ĐĂNG NHẬP)</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ID_TK)
+                @Html.ValidationMessageFor(model => model.ID_TK)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">NGÀY LẬP ĐƠN</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ngaylap, new { @Value = Model.ngaylap.ToString("d") })
+                @Html.ValidationMessageFor(model => model.ngaylap)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">NGÀY NHẬN HÀNG</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ngaynhanhang, new { @Value = Model.ngaylap.ToString("d") })
+                @Html.ValidationMessageFor(model => model.ngaynhanhang)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">ĐỊA CHỈ GIAO HÀNG</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.diachigiaohang)
+                @Html.ValidationMessageFor(model => model.diachigiaohang)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">SỐ ĐIỆN THOẠI</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.phone)
+                @Html.ValidationMessageFor(model => model.phone)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">TRẠNG THÁI ĐƠN HÀNG</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.trangthai)
+                <br /><span>Not Set: Đang chờ xử lý</span>
+                <br /><span>True: Đã duyệt</span>
+                <br /><span>False: Chưa duyệt</span>
+                @Html.ValidationMessageFor(model => model.trangthai)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phone">TÊN KHÁCH HÀNG</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.hotenkh)
+                @Html.ValidationMessageFor(model => model.hotenkh)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="LƯU LẠI" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+}
+
+<div>
+    @Html.ActionLink("QUAY LẠI", "Index")
+</div>

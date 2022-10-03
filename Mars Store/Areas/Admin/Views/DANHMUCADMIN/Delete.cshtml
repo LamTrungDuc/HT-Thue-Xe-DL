@@ -1,0 +1,26 @@
+﻿@model Mars_Store.Models.Entities.DANHMUC
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutAdmin.cshtml";
+}
+<h3>Bạn có thực sự muốn xóa?</h3>
+<div>
+    <h4>DANH MỤC</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            @Html.DisplayFor(model => model.tendanhmuc)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="XÓA" class="btn btn-default" /> |
+            @Html.ActionLink("QUAY LẠI", "Index")
+        </div>
+    }
+</div>

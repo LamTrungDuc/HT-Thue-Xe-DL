@@ -1,0 +1,135 @@
+﻿@using Mars_Store.Models.Entities;
+@model Mars_Store.Models.Entities.DONHANG
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutAdmin.cshtml";
+}
+@if (Model.trangthai == null) { } else 
+if (Model.trangthai == true) 
+{ 
+<button style="float:right; width:150px; height:50px; font-family:'UVN Chu Ky'; color:red;"><a href="/Admin/DONHANG/InHoaDon/@Model.ID_DH"> IN HÓA ĐƠN </a></button>
+}
+else if (Model.trangthai == false)
+{
+    <button style="float:right; width:150px; height:50px; font-family:'UVN Chu Ky'; color:red;"><a href="/Admin/DONHANG/InHoaDon/@Model.ID_DH"> IN HÓA ĐƠN </a></button>
+}<br />
+<h4>ĐƠN HÀNG ĐÃ ĐẶT</h4>
+<div>
+	<hr />
+    <table class="table table-bordered text-center">
+        <tr>
+            <th class="text-center">
+                ID LOGIN (NẾU KH ĐĂNG NHẬP)
+            </th>
+            <th class="text-center">
+                NGÀY LẬP
+            </th>
+            <th class="text-center">
+                NGÀY NHẬN HÀNG
+            </th>
+            <th class="text-center">
+                ĐỊA CHỈ GIAO HÀNG
+            </th>
+            <th class="text-center">
+                SỐ ĐIỆN THOẠI
+            </th>
+            <th class="text-center">
+                TRẠNG THÁI
+            </th>
+            <th class="text-center">
+                HỌ TÊN KHÁCH HÀNG
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.ID_TK)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ngaylap, new { @Value = Model.ngaylap.ToString("d") })
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ngaynhanhang, new { @Value = Model.ngaynhanhang.ToString("d") })
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.diachigiaohang)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.phone)
+            </td>
+            <td>
+                @if (Model.trangthai == null)
+                {
+                    <span>Đang chờ xử lý</span>
+                    <button><a href="/Admin/DONHANG/Edit/@Model.ID_DH">Sửa</a></button>
+                }
+                else if (Model.trangthai == true)
+                { <span>Đã duyệt</span>}
+                else if (Model.trangthai == false)
+                { <span>Chưa duyệt</span>}
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.hotenkh)
+            </td>
+        </tr>
+    </table>
+</div>
+
+<hr />
+<h4> CHI TIẾT ĐƠN HÀNG</h4>
+<table class="table table-hover table-bordered text-center">
+    <tr>
+        <th class="text-center">
+            MÃ SẢN PHẨM
+        </th>
+        <th class="text-center">
+            TÊN SẢN PHẨM
+        </th>
+        <th class="text-center">
+            ẢNH SẢN PHẨM
+        </th>
+        <th class="text-center">
+            ĐƠN GIÁ
+        </th>
+        <th class="text-center">
+            SỐ LƯỢNG
+        </th>
+        <th class="text-center">
+            THÀNH TIỀN
+        </th>
+        <th class="text-center">TÁC VỤ</th>
+    </tr>
+
+    @foreach (CTDONHANG item in (ViewBag.CTHD as IEnumerable<CTDONHANG>))
+    {
+        <tr>
+            <td>
+                @item.ID_SP
+            </td>
+            <td>
+                @item.SANPHAM.tensanpham
+            </td>
+            <td>
+                <div><img src="@Url.Content("~/Content/images/"+item.SANPHAM.ImgLink)" width="90" height="90"></div>
+            </td>
+            <td>
+                @item.SANPHAM.giabd
+            </td>
+            <td>
+                @item.soluong
+            </td>
+            <td>
+                @(item.soluong * item.SANPHAM.giabd)
+
+            </td>
+            <td>
+                @if (item.DONHANG.trangthai == null)
+                {
+                    <a href="/Admin/CTHOADON/Edit/@item.ID_CTDH">SỬA |  </a>
+                    @Html.ActionLink("XÓA", "Delete", new { id = item.ID_CTDH })
+                }
+            </td>
+        </tr>
+    }
+
+</table>

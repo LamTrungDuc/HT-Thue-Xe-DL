@@ -1,0 +1,15 @@
+﻿@using Mars_Store.ViewModels;
+@model List<tblTinTucViewModel>
+
+
+<li>
+    <a href="#">TIN TỨC   <img src="/Content/images/ads-hot.gif" width="35" height="12" /></a>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="#">@item.tennhomtin</a>
+            </li>
+        }
+    </ul>
+</li>

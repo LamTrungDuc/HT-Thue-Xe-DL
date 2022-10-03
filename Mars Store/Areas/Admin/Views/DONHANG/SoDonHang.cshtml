@@ -1,0 +1,29 @@
+﻿@using Mars_Store.Models.Entities
+@model List<DONHANG>
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge">@ViewBag.SoDH</span></a>
+<ul class="dropdown-menu">
+
+    <li>
+        <div class="notification_header">
+            <h3>Có @ViewBag.SoDH đơn hàng mới</h3>
+        </div>
+    </li>
+
+@foreach (var item in Model)
+{
+    <li>
+        <a href="/Admin/DONHANG/Details/@item.ID_DH">
+            <div class="user_img"><img src="~/Content/logo/order.png" alt=""></div>
+            <div class="notification_desc">
+
+                <p>@item.hotenkh đã đặt s.phẩm </p>
+                <p><span>@item.ngaylap.ToLongDateString()</span></p>
+
+
+            </div>
+            <div class="clearfix"></div>
+        </a>
+    </li>
+    }
+</ul>
+

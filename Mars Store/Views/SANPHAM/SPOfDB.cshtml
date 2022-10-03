@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Mars_Store.Models.Entities.SANPHAM>
+
+
+<div class="section group">
+    @foreach (var item in Model) { 
+    <div class="grid_1_of_4 images_1_of_4">
+        <a href="/SANPHAM/Details/@item.ID_SP"><img src="/Content/images/@item.ImgLink" alt="" /></a>
+        <h4><a href="/SANPHAM/Details/@item.ID_SP">@item.tensanpham</a></h4>
+        <p><span class="price">@string.Format("{0:##,#}", @item.giabd) VNĐ</span></p>
+    </div>
+    }
+</div>

@@ -1,0 +1,149 @@
+﻿@model Mars_Store.Models.Entities.SANPHAM
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>THÊM MỚI</title>
+</head>
+<body>
+    @using (Html.BeginForm("Create", "SANPHAMADMIN", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="form-horizontal">
+            <h4>SẢN PHẨM</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <label class="control-label col-md-2" for="ID_DM">HÃNG SẢN XUẤT</label>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.ID_DM, ViewBag.ID_DM as SelectList, "Chọn một hãng sản xuất", new { @class = "fomr-control" })
+                    @*@Html.EditorFor(model => model.ID_DM)*@
+                    @Html.ValidationMessageFor(model => model.ID_DM)
+                </div>
+            </div>
+    <style>
+        select {
+            width: 660px;
+            border-color: cadetblue;
+            border-radius: 5px;
+            border-style: inset;
+            padding: 4px 4px;
+        }
+    </style>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="tensanpham">TÊN SẢN PHẨM</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.tensanpham, new { placeholder = "Nhập vào tên sản phẩm", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.tensanpham)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label class="control-label col-md-2" for="giabd">GIÁ BÁN</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.giabd, new { placeholder = "Nhập vào mức giá", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.giabd)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label class="control-label col-md-2" for="ID_DM">KHỐI LƯỢNG</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.trongluong, new { placeholder = "Nhập vào khối lượng", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.trongluong)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label class="control-label col-md-2" for="ID_DM">MÀU SẮC</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.mausac, new { placeholder = "Nhập vào màu sắc", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.mausac)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label class="control-label col-md-2" for="ID_DM">ẢNH</label>
+                <div class="col-md-10">
+                    <input type="file" name="file"/>
+                    @*@Html.EditorFor(model => model.ImgLink)
+                    @Html.ValidationMessageFor(model => model.ImgLink)*@
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label class="control-label col-md-2" for="ID_DM">ĐỘNG CƠ</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.memory, new { placeholder = "Nhập vào ĐỘNG CƠ", @class = "form -control" })
+                    @Html.ValidationMessageFor(model => model.memory)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label class="control-label col-md-2" for="ID_DM">CHIỀU DÀI</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.hedieuhanh, new { placeholder = "Nhập vào CHIỀU DÀI", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.hedieuhanh)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label class="control-label col-md-2" for="ID_DM">CHIỀU CAO</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.vga, new { placeholder = "Nhập vào CHIỀU CAO", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.vga)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label class="control-label col-md-2" for="ID_DM">HỆ THỐNG THẮNG</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.cpuz, new { placeholder = "Nhập vào HỆ THỐNG THẮNG", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cpuz)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label class="control-label col-md-2" for="ID_DM">LOẠI</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.battery, new { placeholder = "Nhập vào LOẠI", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.battery)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label class="control-label col-md-2" for="ID_DM">PHỤ KIỆN</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.phukiendikem, new { placeholder = "Phụ kiện đi kèm gồm có", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.phukiendikem)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label class="control-label col-md-2" for="ID_DM">BẢO HÀNH</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.chedobaohanh, new { placeholder = "Nhập vào chế độ bảo hành", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.chedobaohanh)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="THÊM MỚI" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    
+    <div>
+        @Html.ActionLink("QUAY LẠI", "Index")
+    </div>
+</body>
+</html>

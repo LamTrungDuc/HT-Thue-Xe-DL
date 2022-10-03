@@ -1,0 +1,124 @@
+﻿@using Mars_Store.ViewModels
+@model tblCTDonHangViewModel
+
+@{
+    ViewBag.Title = "InHoaDon";
+}
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> MARS CARS | IN HÓA ĐƠN </title>
+    <link href="~/Content/images/id4.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Areas/Admin/Razer/cssbyhoadon.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <img src="~/Content/logo/logomar.png" style="width:120%; max-width:320px;"><hr>
+                            </td>
+
+                            <td><b>
+                                Hóa đơn số: # @Model.ID_DH<br>
+                                Ngày lập: @Model.ngaylap.ToLongDateString()<br>
+                                Ngày nhận hàng: @Model.ngaynhanhang.ToLongDateString()
+                            </b></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td><b>
+                                    <span style="color:red; font-family:'UVN Chu Ky'; font-size:27px;">MARS CARS, Inc.</span><br>
+                                Số 43, Thái Hà, Trung Liệt, Đống Đa, Hà Nội.<br>
+                                Email: trandirector.ctv@gmail.com<br />
+                                Điện thoại: 0943103168</b>
+                            </td>
+
+                            <td>
+                                <span style="color:red; font-family:'UVN Chu Ky'; font-size:20px;">Tên khách hàng: @Model.hotenkh</span><br>
+                                <span style="color:red; font-family:'UVN Chu Ky'; font-size:20px;">Địa chỉ giao hàng: @Model.diachigiaohang</span><br>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="heading">
+                <td>
+                    Tình trạng đơn hàng
+                </td>
+
+                <td>
+                    Tình trạng
+                </td>
+            </tr>
+            <tr class="details">
+                <td>
+                </td>
+
+                <td><b>
+                    @if (Model.trangthai == true)
+                    { <span>Đã xử lý</span>  }
+                    else if (Model.trangthai == false)
+                    { <span>Đã xử lý</span>  }</b>
+                </td>
+            </tr>
+
+            <tr class="heading">
+                <td>
+                    Sản phẩm
+                </td>
+
+                <td>
+                    Tác vụ
+                </td>
+            </tr>
+            <tr class="item">
+                <td><b>
+                    Tên sản phẩm
+                </b></td>
+
+                <td>
+                    @Model.tensanpham
+                </td>
+            </tr>
+
+            <tr class="item">
+                <td><b>
+                    Số lượng</b>
+                </td>
+
+                <td>
+                    @Model.soluong
+                </td>
+            </tr>
+
+            <tr class="item last">
+                <td><b>
+                    Đơn giá</b>
+                </td>
+
+                <td>
+                    @string.Format("{0:##,#}", @Model.giabd) VNĐ
+                </td>
+            </tr>
+            <tr class="total">
+                <td></td>
+
+                <td>
+                    Tổng tiền: @string.Format("{0:##,#}", @Model.soluong * @Model.giabd) VNĐ
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

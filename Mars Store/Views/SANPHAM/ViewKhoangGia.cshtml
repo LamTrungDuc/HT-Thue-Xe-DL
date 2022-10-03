@@ -1,0 +1,12 @@
+﻿@using Mars_Store.Models.Entities
+@model IEnumerable<KHOANGGIA>
+
+<div class="select-style ">
+    <select onchange="window.location.href=this.value">
+        <option value="" disabled selected hidden>Chọn mức giá phù hợp ... </option>
+        @foreach (var item in Model)
+{
+    <option value="/SANPHAM/KhoangGia?cantren=@item.cantren&canduoi=@item.canduoi">@string.Format("{0:##,#}", @item.canduoi) - @string.Format("{0:##,#}", @item.cantren) VNĐ</option>
+}
+    </select>
+</div>

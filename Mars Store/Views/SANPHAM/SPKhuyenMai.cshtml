@@ -1,0 +1,97 @@
+﻿@using Mars_Store.ViewModels;
+@model List<tblSanPhamViewModel>
+@{
+    ViewBag.Title = "SPKhuyenMai";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .menu-trang {
+        margin: 8px 0;
+    }
+
+        .menu-trang .pagination:after {
+            display: table;
+            content: '';
+            clear: both;
+        }
+
+        .menu-trang .pagination > li {
+            float: left;
+            margin: 0 4px 0 0;
+            color: #333;
+        }
+
+        .menu-trang li > a {
+            display: block;
+            padding: 8px 12px;
+            color: #333;
+            cursor: pointer;
+        }
+
+            .menu-trang li > a:hover {
+                background: #f44336;
+                color: #fff;
+                border-radius: 2px;
+            }
+
+        .menu-trang .active {
+            background: #4caf50;
+            color: #fff;
+            border-radius: 2px;
+        }
+</style>
+<br />
+<div class="content">
+    <div class="content_top">
+        <div class="heading">
+            <h3>SẢN PHẨM GIẢM GIÁ</h3>
+        </div>
+        <div class="see">
+        </div>
+        <div class="clear"></div>
+    </div>
+    @{  var i = 0;
+      List<tblSanPhamViewModel> list = new List<tblSanPhamViewModel>();
+      foreach (tblSanPhamViewModel P in Model)
+      {
+          list.Add(P);
+          i++;
+          if (i % 4 == 0 || i == Model.Count())
+          {
+            <div class="section group">
+                @foreach (var a in list)
+                {
+                    <div class="grid_1_of_4 images_1_of_4">
+                        <a href="/SanPham/Details/@a.ID_SP"><img src="/Content/images/@a.ImgLink" width="150" height="150" /></a>
+                        <h3><a href="/SanPham/Details/@a.ID_SP">@a.tensanpham </a></h3>
+                        <div class="price-details">
+                            <div class="price-number">
+                                <p><span class="strike">@string.Format("{0:##,#}", @a.giabd) VNĐ</span> </p>
+                                <p><span class="price">@string.Format("{0:##,#}", @a.giaht) VNĐ</span> </p>
+                            </div>
+                            <div class="container">
+                                <div class="button"><span><a href="/Cart/AddItem/@a.ID_SP">THUÊ +1</a></span></div>
+                                <div class="button"><span><a href="/SanPham/Details/@a.ID_SP" class="details">CHI TIẾT</a></span></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                }
+            </div>
+                list = new List<tblSanPhamViewModel>();
+          }
+      }
+
+
+    }
+</div>
+
+<style>
+    .images_1_of_4 {
+        width: 20.8%;
+        padding: 1.5%;
+        height: 300px;
+        text-align: center;
+        position: static;
+    }
+</style>

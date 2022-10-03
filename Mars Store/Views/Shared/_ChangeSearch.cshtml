@@ -1,0 +1,68 @@
+﻿<div class="box_right filter" id="ram">
+    <div class="select-style ">
+        <select onchange="window.location.href=this.value">
+            <option value="" disabled selected hidden>RAM </option>
+            <option value="#"> < 2 GB</option>
+            <option value="#">4 GB</option>
+            <option value="#">6 GB</option>
+            <option value="#">8 GB</option>
+            <option value="#">16 GB</option>
+            <option value="#">24 GB</option>
+            <option value="#">32 GB</option>
+            <option value="#"> > 36 GB</option>
+        </select>
+    </div>
+</div><br />
+<div class="box_right filter" id="cpu">
+    <div class="select-style ">
+        <select onchange="window.location.href=this.value">
+            <option value="" disabled selected hidden>CPU </option>
+            <option value="#">Intel Core i3</option>
+            <option value="#">Intel Core i5</option>
+            <option value="#">Intel Core i7</option>
+            <option value="#">Intel Pentium</option>
+        </select>
+    </div>
+</div><br />
+<div class="box_right filter" id="windows">
+    <div class="select-style ">
+        <select onchange="window.location.href=this.value">
+            <option value="" disabled selected hidden>WINDOWS </option>
+            <option value="#">Windows XP</option>
+            <option value="#">Window Vista</option>
+            <option value="#">Window 7 All</option>
+            <option value="#">Window 8/8.1 All</option>
+            <option value="#">Window 10 All</option>
+            <option value="#">Unbutu/Linux</option>
+            <option value="#">Mac OS X</option>
+        </select>
+    </div>
+</div><hr />
+<button type="submit" class="search">TÌM KIẾM</button><br />
+<style>
+    .search {
+        float: right;
+        margin-top: 0px;
+    }
+
+    .select-style {
+        border: 1px solid #ccc;
+        width: 200px;
+        border-radius: 3px;
+        overflow: hidden;
+        background: #fafafa url("img/icon-select.png") no-repeat 90% 50%;
+    }
+
+        .select-style select {
+            padding: 3px 0px;
+            width: 100%;
+            border: indigo;
+            box-shadow: none;
+            background: transparent;
+            background-image: none;
+        }
+
+            .select-style select:focus {
+                outline: none;
+            }
+</style>
